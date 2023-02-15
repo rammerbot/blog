@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 from ckeditor_uploader.fields import RichTextUploadingField
-from .managers import EntryManager
+from .managers import EntryManager, CategoriaManager
 
 # Create your models here.
 
@@ -11,6 +11,7 @@ class Category(models.Model):
     short_name = models.CharField('Nombre corto', max_length=15, unique=True)
     create_at = models.DateTimeField('Fecha de Creacion', auto_now_add=True)
     update_at = models.DateTimeField('Fecha de Actualizacion', auto_now=True)
+    objects = CategoriaManager()
 
     class Meta:
         verbose_name = 'Categoria'
