@@ -1,0 +1,32 @@
+.header {
+    display: flex;
+    align-items: center;
+    background: #595b5c;
+    padding: 0.5em 1em 0.5em 1em;
+}
+
+.blog-action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-favoritos {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: solid 1px green;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.card-favoritos-img {
+    width: 120px;
+    height: 120px;
+    margin-right: 1em;
+}
+
+.imagen_home2 {
+    height: 250px;
+
+}

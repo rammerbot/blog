@@ -36,7 +36,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     # obteber valores de los usuarios
     def __str__(self):
-        return str(self.id) + ' - ' + self.email
+        return str(self.id) + ' - ' + self.username + ': ' + self.email
 
     def get_username(self):
         return self.email
