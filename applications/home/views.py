@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 
 from applications.entrada.models import Entry
 from .models import Home
-from .forms import SuscribersForm
+from .forms import SuscribersForm, ContactForm
 # Create your views here.
 
 
@@ -34,8 +34,14 @@ class IndexView(TemplateView):
         return context
 
 class SuscribersView(CreateView):
-    form_class = SuscribersForm
+    form_class = ContactForm
     success_url = '.'
     
+
+class ContactView(CreateView):
+    form_class = ContactForm
+    success_url = reverse_lazy('home_app:index')
+    
+
 
     

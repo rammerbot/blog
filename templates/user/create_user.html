@@ -1,15 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Usuario</title>
-</head>
-<body>
-    <form method="post">{% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Crear</button>
-    </form>
-</body>
-</html>
+<!-- head para PC -->
+{% extends "user/base_user.html" %}
+{% load  static %}
+{% block title %}RammerBot | Crear Nuevo Usuario {% endblock title %}
+{% block content %}
+
+{% include "includes/header.html" %}
+
+<div class="grid-container">
+    <div class="grid-x grid-margin-x align-center">
+        <div class="cell medium-10 large-6" style="margin-top: 2em;">
+            <div class="card" style="width: 100%;">
+                <div class="card-divider">
+                  <h4>Ingrese sus datos</h4>
+                </div>
+                <div class="card-section">
+                    <form method="POST" class="grid-x grid-margin-x">{% csrf_token %}
+                        <div class="cell large-12">
+                            {{form.as_p}}
+                        </div>
+                        <button type="submit" class="cell hollow button primary">Registrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

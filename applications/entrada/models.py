@@ -1,7 +1,11 @@
 from django.db import models
+from datetime import datetime, timedelta
+from django.template.defaultfilters import slugify
 from django.conf import settings
+from django.urls import reverse, reverse_lazy
 from ckeditor_uploader.fields import RichTextUploadingField
 from .managers import EntryManager, CategoriaManager
+
 
 # Create your models here.
 
@@ -56,3 +60,22 @@ class Entry(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
+    """Generar slug unico"""
+    def save(self, *args, **kwargs):
+        now =  datetime.now()
+        totaltime = timedelta(
+            hours=now.hour,
+            minutes=now.minute,
+            seconds=now.second
+        )
+        seconds = int(totaltime.total_seconds())
+        slug_unique = f'{self.title}{str(seconds)}'
+        self.slug = slugify(slug_unique)
+        super(Entry, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse_lazy('entrada_app:detail', kwargs = {
+            'slug':self.slug
+            })
+    

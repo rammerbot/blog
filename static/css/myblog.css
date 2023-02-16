@@ -35,3 +35,10 @@
     color: red;
     font-size: 30px;
 }
+
+.nombre_header {
+   font-size: 30px; 
+   color: #0277bd;
+   padding-left: 3%;
+   font-weight: bold;
+}

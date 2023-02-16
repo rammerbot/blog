@@ -1,4 +1,5 @@
 from django.db import models
+from model_utils.models import TimeStampedModel
 
 # THIRD_APPS 
 
@@ -36,3 +37,16 @@ class Suscribers(models.Model):
 
     def __str__(self):
         return self.email
+
+"""formulario contacto"""
+class Contact(TimeStampedModel):
+    full_name = models.CharField('Nombre', max_length=60)
+    email = models.EmailField('Correo')
+    message = models.TextField('Mensaje')
+
+    class Meta:
+        verbose_name = 'Contacto'
+        verbose_name_plural =  'Contactos'
+
+    def __str__(self):
+        return self.full_name
