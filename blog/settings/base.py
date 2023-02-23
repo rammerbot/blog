@@ -46,6 +46,8 @@ LOCAL_APPS = [
     'applications.users',
     'applications.favoritos',
     'applications.entrada',
+    'applications.ventas',
+    'applications.servicios',
 ]
 INSTALLED_APPS = BASE_APPS + THIRD_APPS + LOCAL_APPS
 
@@ -73,6 +75,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'applications.processors.home_contact',
+                'applications.processors.carrito',
             ],
         },
     },

@@ -25,7 +25,7 @@
             <div class="grid-x grid-margin-x">
                 {% for entrada in entradas %}
                     <div class="cell small-6 large-4">
-                        <div class="card" style="width: 100%;">
+                        <div class="card shadow" style="width: 100%;">
                             <img class='image_home' src="{{entrada.image.url}}">
                             <div class="card-section">
                             <h4><a href="{%url 'entrada_app:detail' entrada.slug %}">{{entrada.title | truncatechars:40}}</a></h4>

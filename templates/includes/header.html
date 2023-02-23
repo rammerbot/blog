@@ -1,7 +1,7 @@
 <header>
     <div class="grid-x grid-margin-x header">
         <div class="cell small-12 medium-4 large-3">
-            <a class="nombre_header" href="{%url 'home_app:index'%}">
+            <a class="nombre_header header_letras" href="{%url 'home_app:index'%}">
                 RammerBot
             </a>
         </div>
@@ -10,17 +10,31 @@
         <div class="cell small-12 large-5">
             <ul class="menu" style="justify-content: flex-end;">
                 <li>
-                    <a href="{%url 'home_app:index'%}">Home</a>
+                    <a class="header_letras" href="{%url 'home_app:index'%}">Home</a>
                 </li>
                 <li>
-                    <a href="{%url 'entrada_app:entradas'%}">Blog</a>
+                    <a class="header_letras" href="{%url 'entrada_app:entradas'%}">Blog</a>
+                </li>
+                <li>
+                    <a class="header_letras" href="{%url 'ventas_app:products'%}">Tienda</a>
+                </li>
+                <li>
+                    <a class="header_letras" href="{%url 'servicios_app:servicios'%}">servicios</a>
                 </li>
                 {% if request.user.is_authenticated %}
+                    {% if carrito_content %}
                     <li>
-                        <a href="{%url 'favorites_app:favorites'%}">favoritos</a>
+                        <a class="header_letras" href="{%url 'ventas_app:carrito'%}">Deseos</a>
                     </li>
                     <li>
-                        <a class="warning button" href="{%url 'user_app:logout'%}">Cerrar sesion</a>
+                        <p class="count">{{count}}</p>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <a class="header_letras" href="{%url 'favorites_app:favorites'%}">favoritos</a>
+                    </li>
+                    <li>
+                        <a class="button" href="{%url 'user_app:logout'%}">Cerrar sesion</a>
                     </li>
                 {% else %}
                     <li>

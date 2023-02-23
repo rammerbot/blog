@@ -7,14 +7,22 @@
 
 {% include "includes/header.html" %}
 
+
 <div class="grid-container">
+    {% if messages %}
+<div class="cell large-12 center messages mensaje_index">
+    {% for message in messages %}
+    <h3{% if message.tags %} class="{{message.tags}}"{% endif %}><p href="{%url 'home_app:index' %}">{{ message }}</p></h3>
+    {% endfor %}
+</div>
+{% endif %}
     <!-- primer bloque del home -->
     <div class="grid-x grid-margin-x" style="margin-top: 1em;">
         <!-- bloque de blog principal -->
-        <div class="cell small-12 large-6">
-            <div class="card" style="width: 100%;">
+        <div class="cell small-12 large-6 ">
+            <div class="card  shadow" style="width: 100%;">
                 <img src="{{portada.image.url}}">
-                <div class="card-section">
+                <div class="card-section background_2">
                   <h4><a href="{%url 'entrada_app:detail' portada.slug%}">{{portada.title}}</a></h4>
                   <p>{{portada.resume | truncatechars:100}}</p>
                 </div>
@@ -25,8 +33,8 @@
         <!-- bloque de blog principal -->
         <div class="cell small-12 large-6 grid-x grid-margin-x">
             {% for entrada in entradas_home %}
-            <div class="cell small-12 large-6">
-                <div class="card" style="width: 100%;">
+            <div class="cell small-12 large-6 ">
+                <div class="card shadow background_2" style="width: 100%;">
                     <img class="image_home" src="{{entrada.image.url}}">
                     <div class="card-section">
                       <h5><a href="{%url 'entrada_app:detail' entrada.slug%}">{{entrada.title | truncatechars:40}}</a></h5>
@@ -41,7 +49,7 @@
 
     <!-- segundo bloque pantalla home -->
     <div class="grid-x align-center" style="margin-top: 1em;">
-        <div class="cell small-12 large-10 callout secondary">
+        <div class="cell small-12 large-10 callout secondary  shadow">
             <h5>{{home.title}}</h5>
             <p>
                 {{home.about_text}}
@@ -74,7 +82,7 @@
         <h3 class="cell">Articulos Recientes:</h3>
         {% for entrada in entradas_recientes %}
         <div class="cell small-6 large-4">
-            <div class="card" style="width: 100%;">
+            <div class="card shadow background_2" style="width: 100%;">
                 <img class="imagen_home2"src="{{entrada.image.url}}">
                 <div class="card-section">
                   <h4><a href="{%url 'entrada_app:detail' entrada.slug%}">{{entrada.title | truncatechars:40}}</a></h4>

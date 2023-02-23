@@ -17,7 +17,6 @@
             </div>
             <div>
                 <p>{{entrada.content | safe}}</p>
-                
             </div>
         </div>
         <!-- FIN bloque contenido del articulo -->
@@ -27,7 +26,7 @@
             <div class="card" style="width: 100%;">
                 <img src="{{entrada.image.url}}">
                 <div class="card-section" style="width: 100%;">
-                  <form method="post" action="{%url 'favorites_app:favorites_add' entrada.id%}" class="blog-action">{% csrf_token %}
+                  <form method="post" action="{%url 'favorites_app:favorites_add' entrada.id %}" class="blog-action">{% csrf_token %}
                     <button type="submit" class="button alert">Agregar a Favoritos</button>
                   </div>
                 </div>

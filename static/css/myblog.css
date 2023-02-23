@@ -1,8 +1,9 @@
 .header {
     display: flex;
     align-items: center;
-    background: #d6d6d6;
+    background: #d1d0cf;
     padding: 0.5em 1em 0.5em 1em;
+    box-shadow: 0px 0px 6px;
 }
 
 .blog-action {
@@ -36,9 +37,48 @@
     font-size: 30px;
 }
 
+.mensaje_index {
+    background-color: rgb(74, 207, 13);
+    box-shadow: 0px 0px 10px white;
+    border-radius: 10px;
+    text-align: center;
+}
+
 .nombre_header {
    font-size: 30px; 
    color: #0277bd;
    padding-left: 3%;
    font-weight: bold;
+}
+
+.count {
+    color: whitesmoke;
+    background-color: brown;
+    border-radius: 10px;
+    padding: 3px;
+}
+
+.shadow {
+    box-shadow: 0px 0px 6px;
+}
+
+.header_letras {
+    color: rgb(41, 40, 40);
+    font-weight: bold;
+}
+
+body {
+    background-image: url(../img/fondot.png);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+  }
+
+.background_2 {
+    background-color: #e7e6e6;
+}
+
+.image_service{
+    margin: 5px;
+    border: ridge orange 7px;
 }

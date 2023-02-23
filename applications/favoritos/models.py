@@ -15,7 +15,9 @@ class Favorites(models.Model):
     objects = FavoritesManager()
 
     class Meta:
+        verbose_name = "Favorito"
+        verbose_name_plural = "Favoritos"
         unique_together = ('user', 'entry')
         
     def __str__(self):
-        return str(self.user)  + ' - ' +  str(self.entry)
+        return f"{self.user.username}  -  {self.entry}"

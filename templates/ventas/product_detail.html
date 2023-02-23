@@ -1,0 +1,41 @@
+<!-- head para PC -->
+{% extends "ventas/base_ventas.html" %}
+{% load  static %}
+{% block title %}RammerBot | {{entrada.title}} {% endblock title %}
+{% block content %}
+
+{% include "includes/header.html" %}
+
+<div class="grid-container">
+    <div class="grid-x grid-margin-x" style="margin-top: 1em;">
+        <h5 class="cell">{{product}}:</h5>
+
+        <!-- bloque de contenido del articulo -->
+        <div class="cell large-8">
+            <div class="cell callout primary">
+                <p>{{product.price}}</p>
+            </div>
+            <div>
+                <p>{{product.description | safe}}</p>
+            </div>
+        </div>
+        <!-- FIN bloque contenido del articulo -->
+
+        <!-- bloque llamada a la accion -->
+        <div class="cell large-4">
+            <div class="card" style="width: 100%;">
+                <img src="{{product.image.url}}">
+                <div class="card-section" style="width: 100%;">
+                  <form method="post" action="{%url 'ventas_app:carrito_add' product.id %}" class="blog-action">{% csrf_token %}
+                    <button type="submit" class="button alert">Añadir a Lista de Deseos</button>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIN bloque llamada a la accion -->
+
+    </div>
+</div>
+{% include "includes/footer.html" %}
+
+{% endblock content %}

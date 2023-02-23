@@ -22,6 +22,13 @@
         <!-- bloque de articulos favoritos de usuario -->
         
         <div class="cell large-8 grid-x grid-margin-x align-center">
+            {% if messages %}
+            <div class="cell large-12 center messages mensaje_index">
+                {% for message in messages %}
+                <h3{% if message.tags %} class="{{message.tags}}"{% endif %}><p href="{%url 'home_app:index' %}">{{ message }}</p></h3>
+                {% endfor %}
+            </div>
+            {% endif %}
             {% for entrada in entradas_user %}
             <div class="cell small-12">
                 <div class="card-favoritos">
@@ -30,7 +37,7 @@
                         <h3 class="card-favoritos-body-titulo">{{entrada.entry.title | truncatechars:40}}</h3>
                         <p class="card-favoritos-body-text">{{entrada.entry.resume | truncatechars:100}}</p>
                         <form method='post' action="{%url 'favorites_app:delete_entry' entrada.id%}" class="card-favoritos-body-actions"> {% csrf_token %}
-                            <a class="button warning" href="{%url 'entrada_app:detail' entrada.entry.id %}">Ver</a>
+                            <a class="button warning" href="{%url 'entrada_app:detail' entrada.entry.slug %}">Ver</a>
                             <button type="submit" class="button alert">Eliminar Favorito</button>
                         </form>
                     </div>
