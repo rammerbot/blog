@@ -9,7 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class EntryListView(ListView):
     template_name = "entrada/lista.html"
     context_object_name = 'entradas'
-    paginate_by = 10
+    paginate_by = 9
 
     """obtener contexto desde cualquier modulo"""
     def get_context_data(self, **kwargs):

@@ -1,16 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Activar cuenta</title>
-</head>
-<body>
-    <form method="post">{% csrf_token %}
-        <h1>Activar cuenta</h1>
-        {{form.as_p}}
-        <button type="submit">Activar</button>
-    </form>
-</body>
-</html>
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Activacion de Cuenta{% endblock title %}
+{% block content %}
+<div class="grid-container">
+    <div class="grid-x grid-margin-x align-center">
+        <form method="post" class="cell medium-6 large-4" style="margin-top: 2em;">{% csrf_token %}
+            <div class="shadow card" style="width: 100%;">
+                <div class="card-divider">
+                  <h1>Activar cuenta</h1>
+                </div>
+                <div class=" card-section">
+                    <div class="cell medium-12">
+                        {{form.as_p}}
+                    </div>
+                    <button type="submit" class="cell hollow button primary">Activar</button>     
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

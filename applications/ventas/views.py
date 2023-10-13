@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView,DeleteView, DetailView, View
 from .models import Product, Category, Carrito
@@ -42,15 +42,18 @@ class CarritoView(ListView):
     model = Carrito
 
 class CarritoAdd(View):
-
+    
     def post(self, request, *args, **kwargs):
-        user = self.request.user
-        product = Product.objects.get(id=self.kwargs['pk'])
-        Carrito.objects.create(
-            user=user,
-            product=product
-        )
-        return HttpResponseRedirect(reverse('ventas_app:carrito'))
+        if not request.user.is_authenticated:
+            return redirect('user_app:login')
+        else:
+            user = self.request.user
+            product = Product.objects.get(id=self.kwargs['pk'])
+            Carrito.objects.create(
+                user=user,
+                product=product
+            )
+            return HttpResponseRedirect(reverse('ventas_app:carrito'))
 
 class DeleteProduct(DeleteView):
     model=Carrito

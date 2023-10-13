@@ -7,34 +7,74 @@
 {% include "includes/header.html" %}
 
 <div class="grid-container">
-    <div class="grid-x grid-margin-x" style="margin-top: 1em;">
-        <h5 class="cell">{{servicio}}:</h5>
-
+    <div class="grid-x grid-margin-x header" style="margin-top: 1em;">
         <!-- bloque de contenido del articulo -->
-        <div class="cell large-8">
-            <div class="cell callout primary">
-                <p>{{servicio.resume}}</p>
+        <div class="cell large-8 callout warning shadow">
+            <h5 class="cell orange header_letras padding">{{servicio}}</h5>
+            <div>
+                <p class="article_font">{{servicio.resume}}</p>
             </div>
             <div>
-                <p>{{servicio.description | safe}}</p>
+                <p class="article_font">{{servicio.description | safe}}</p>
             </div>
         </div>
         <!-- FIN bloque contenido del articulo -->
 
         <!-- bloque llamada a la accion -->
         <div class="cell large-4">
-            <div class="card" style="width: 100%;">
-                <img class="image_service" src="{{image1}}">
-                <img class="image_service" src="{{image2}}">
-                <img class="image_service" src="{{image3}}">
-                <img class="image_service" src="{{image4}}">
-                <img class="image_service" src="{{image5}}">
-              
-               
+            <div class="card orange" style="width: 100%;">
+                <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
+                    <div class="orbit-wrapper">
+                    <div class="orbit-controls">
+                        <button class="orbit-previous"><span class="show-for-sr">Previa Slide</span>&#9664;&#xFE0E;</button>
+                        <button class="orbit-next"><span class="show-for-sr">Siguiente Slide</span>&#9654;&#xFE0E;</button>
+                    </div>
+                    <ul class="orbit-container">
+                        <li class="is-active orbit-slide">
+                        <figure class="orbit-figure">
+                            <img class="orbit-image"  src="{{image1}}" alt="Tecnology & Services">
+                            <figcaption class="orbit-caption">RammerBot | Tecnology & Services.</figcaption>
+                        </figure>
+                        </li>
+                        <li class="is-active orbit-slide">
+                        <figure class="orbit-figure">
+                            <img class="orbit-image"  src="{{image2}}" alt="Tegnology & Services">
+                            <figcaption class="orbit-caption">RammerBot | Tecnology & Services.</figcaption>
+                        </figure>
+                        </li>
+                        <li class="is-active orbit-slide">
+                        <figure class="orbit-figure">
+                            <img class="orbit-image"src="{{image3}}" alt="Tegnology & Services">
+                            <figcaption class="orbit-caption">RammerBot | Tecnology & Services.</figcaption>
+                        </figure>
+                        </li>
+                        <li class="is-active orbit-slide">
+                        <figure class="orbit-figure">
+                            <img class="orbit-image"  src="{{image4}}" alt="Tegnology & Services">
+                            <figcaption class="orbit-caption">RammerBot | Tecnology & Services.</figcaption>
+                        </figure>
+                        </li>
+                        <li class="is-active orbit-slide">
+                            <figure class="orbit-figure">
+                            <img class="orbit-image" src="{{image5}}" alt="Tegnology & Services">
+                            <figcaption class="orbit-caption">RammerBot | Tecnology & Services.</figcaption>
+                            </figure>
+                        </li>
+                    </ul>
+                    </div>
+                    <nav class="orbit-bullets">
+                    <button class="is-active" data-slide="0">
+                        <span class="show-for-sr">First slide details.</span>
+                        <span class="show-for-sr" data-slide-active-label>Current Slide</span>
+                    </button>
+                    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+                    <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+                    <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
+                    </nav>
+                </div>
             </div>
         </div>
         <!-- FIN bloque llamada a la accion -->
-
     </div>
 </div>
 {% include "includes/footer.html" %}

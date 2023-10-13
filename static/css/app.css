@@ -15,20 +15,7 @@
 html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%; }
-
-body {
-  margin: 0;
-  background-image: url(../img/python.jpg);
-}
   
-
-.header {
-    display: flex;
-    align-items: center;
-    background: #d6d6d6;
-    padding: 0.5em 1em 0.5em 1em;
-
-}
 .image_home {
     height: 120px;
 }
@@ -658,7 +645,7 @@ a {
   text-decoration: none;
   cursor: pointer; }
   a:hover, a:focus {
-    color: #1468a0; }
+    color: #f87219; }
   a img {
     border: 0; }
 

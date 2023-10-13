@@ -4,7 +4,7 @@ from django.views.generic import FormView, TemplateView, View
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
-from .forms import CreateUserForm, LoginForm, UserUdateForm, ActivateForm
+from .forms import CreateUserForm, LoginForm, UserUpdateForm, ActivateForm
 
 from .models import User
 from .funtions import code_generator
@@ -36,7 +36,7 @@ class CreateUserView(FormView):
         # enviar codigo por email
         asunto = 'Confirmacion de Email'
         mensaje = f'El codigo de verificaciones es: {codigo}'
-        remitente = 'apuestaselviejo@gmail.com'
+        remitente = 'rammer@rammerbot.com'
         send_mail(asunto, mensaje, remitente,[form.cleaned_data['email'],])
         return HttpResponseRedirect(reverse('user_app:activate', kwargs={'pk':usuario.id}))
 
@@ -72,7 +72,7 @@ class LogoutView(View):
 
 class UserUpdateView(FormView):
     template_name = 'user/user_update.html'
-    form_class = UserUdateForm
+    form_class = UserUpdateForm
     success_url = reverse_lazy('user_app:login')
 
     def get_form_kwargs(self):

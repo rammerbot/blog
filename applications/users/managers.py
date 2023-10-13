@@ -29,7 +29,8 @@ class UseManager(BaseUserManager, models.Manager):
 # validar contraseña
     def password_validator(self, username):
 
-        old_password = self.get(username=username)
+        old_password = self.get(id=username)
+        print(old_password.password)
         
         return old_password.password
          

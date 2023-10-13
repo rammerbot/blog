@@ -16,7 +16,7 @@
             <form class="input-group">{% csrf_token %}
                 <input method='GET' name='kword' id='kword' class="input-group-field" type="text" placeholder="Buscar ...">
                 <div class="input-group-button">
-                  <input type="submit" class="button" value="Buscar">
+                  <input type="submit" class="button warning" value="Buscar">
                 </div>
             </form>
             <!-- FIN bloque de formulario -->
@@ -25,11 +25,11 @@
             <div class="grid-x grid-margin-x">
                 {% for entrada in servicio %}
                     <div class="cell small-6 large-4">
-                        <div class="card shadow" style="width: 100%;">
+                        <div class="card shadow orange" style="width: 100%;">
                             <img class='image_home' src="{{entrada.image_1.url}}">
                             <div class="card-section">
-                            <h4><a href="{%url 'servicios_app:servicio' entrada.slug %}">{{entrada.service | truncatechars:40 }}</a></h4>
-                            <p>S/ {{entrada.resume}}</p>
+                            <h4><a class="header_letras" href="{%url 'servicios_app:servicio' entrada.slug %}">{{entrada.service | truncatechars:40 }}</a></h4>
+                            <p class="header_letras2">{{entrada.resume}}</p>
                             </div>
                         </div>
                     </div>
@@ -44,11 +44,12 @@
 
 
         <!-- inicio del segundo bloque - categorias -->
-        <div class="cell small-12 large-4" style="height: 500px;">
-            <h4>Categorias</h4>
+        <div class="cell small-12 large-4 orange centrar" style="height: 500px;">
+            <h4 class="header_letras">Categorias</h4>
+            <hr>
             <ul class="vertical menu">
                 {% for categoria in categories %}
-                    <li><a href="?categorias={{categoria.category}}">{{categoria.category}}</a></li>
+                    <li><a class="header_letras" href="?categorias={{categoria.category}}">{{categoria.category}}</a><hr></li>
                 {% endfor %}
             </ul>
         </div>
@@ -59,7 +60,7 @@
     <!-- inicio de bloque de paginacion -->
     </div class="cell ">
     {% if is_paginated %}
-        <div class="cell">
+        <div class="cell paginacion">
             <nav aria-label="Pagination">
                 <ul class="pagination">
                     {% if page_obj.has_previous  %}
@@ -67,7 +68,7 @@
                     {% endif %}
                     {% for pagina in paginator.page_range %}
                         {%if pagina == page_obj.number%}
-                            <li class="current"><span class="show-for-sr">You're on page</span>{{pagina}}</li>
+                            <li class="current orange"><span class="show-for-sr">You're on page</span>{{pagina}}</li>
                         {% else %}        
                             <li><a href="?page={{pagina}}" aria-label="Pagina {{pagina}}">{{pagina}}</a></li>
                         {%endif%}

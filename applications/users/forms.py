@@ -87,7 +87,7 @@ class LoginForm(forms.Form):
 
 # formulario para el cambio de datos
 
-class UserUdateForm(forms.Form):
+class UserUpdateForm(forms.Form):
 
     old_password = forms.CharField(
         label="Contraseña actual: ",
@@ -121,12 +121,15 @@ class UserUdateForm(forms.Form):
 
     def __init__(self, username, *args, **kwargs):
         self.username = username
-        super(UserUdateForm, self).__init__(*args, **kwargs)
+        super(UserUpdateForm, self).__init__(*args, **kwargs)
 
     def clean_new_password2(self):
         # verificacion de contaseña actual
-        password = User.objects.password_validator(self.username)
+        print("****************************************************************************************")
+        print(self.username)
 
+        password = User.objects.password_validator(self.username)
+       
         if not check_password(self.cleaned_data['old_password'], password):
             self.add_error('old_password', 'La contraseña es incorrecta' )
         # verificacion de contaseña nueva

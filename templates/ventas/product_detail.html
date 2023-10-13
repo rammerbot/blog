@@ -7,16 +7,17 @@
 {% include "includes/header.html" %}
 
 <div class="grid-container">
-    <div class="grid-x grid-margin-x" style="margin-top: 1em;">
-        <h5 class="cell">{{product}}:</h5>
+    <div class="grid-x grid-margin-x header " style="margin-top: 1em;">
+        
 
         <!-- bloque de contenido del articulo -->
-        <div class="cell large-8">
-            <div class="cell callout primary">
-                <p>{{product.price}}</p>
+        <div class="cell large-8 callout warning">
+            <h5 class="cell title">{{product}}</h5>
+            <div class="cell">
+                <p class="article_font">{{product.description | safe}}</p>
             </div>
             <div>
-                <p>{{product.description | safe}}</p>
+                <p class="a_color2">{{product.price}} $</p>
             </div>
         </div>
         <!-- FIN bloque contenido del articulo -->
@@ -25,7 +26,7 @@
         <div class="cell large-4">
             <div class="card" style="width: 100%;">
                 <img src="{{product.image.url}}">
-                <div class="card-section" style="width: 100%;">
+                <div class="card-section orange" style="width: 100%;">
                   <form method="post" action="{%url 'ventas_app:carrito_add' product.id %}" class="blog-action">{% csrf_token %}
                     <button type="submit" class="button alert">Añadir a Lista de Deseos</button>
                   </div>

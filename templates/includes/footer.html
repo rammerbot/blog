@@ -1,29 +1,29 @@
-<div class="callout secondary">
+<div class="callout header">
     <div class="grid-x align-center">
-        <h3 class="cell small-12 large-7">Formulario de Contacto:</h3>
+        <h3 class="cell small-12 large-7 header_letras">Formulario de Contacto:</h3>
         <form method="POST" action= "{% url 'home_app:contact'%}" class="cell small-12 large-7">{% csrf_token %}
             <div class="grid-x grid-padding-x">
                 <div class="medium-6 cell">
-                  <label>Nombres
+                  <label class="header_letras">Nombres
                     <input name="full_name" id="id_full_name" type="text" placeholder="nombres...">
                   </label>
                 </div>
                 <div class="medium-6 cell">
-                  <label>Correo
+                  <label class="header_letras">Correo
                     <input name="email" id="id_email" type="email" placeholder="Correo ...">
                   </label>
                 </div>
                 <div class="medium-12 cell">
-                    <label>Mensaje
+                    <label class="header_letras">Mensaje
                         <textarea name="message" id="id_message" placeholder="Mensaje"></textarea>
                     </label>
                 </div>
                 <div class="medium-12 cell">
-                    <button type="submit" class="success button">Enviar</button>
+                    <button type="submit" class="button warning">Enviar</button>
                 </div>
             </div>
         </form>
-        <p class="cell large-8">Otras formas de contacto</p>
+        <p class="cell large-8 header_letras">Otras formas de contacto</p>
         <p class="cell large-8">
           <span class="label warning">Correo: {{email_contact}}</span>
           <span class="label warning">Telefono: {{phone_contact}}</span>
