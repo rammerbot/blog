@@ -1,8 +1,9 @@
+{% load static %}
 <header>
     <div class="grid-x grid-margin-x header">
         <div class="cell small-12 medium-4 large-3">
-            <a class="nombre_header header_letras" href="{%url 'home_app:index'%}">
-                RammerBot
+            <a href="{%url 'home_app:index'%}">
+                <img class="card-favoritos-img" src="{% static "img/logo.png" %}">
             </a>
         </div>
         <div class="cell small-12 medium-4">
