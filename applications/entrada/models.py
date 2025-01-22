@@ -2,8 +2,7 @@ from django.db import models
 from datetime import datetime, timedelta
 from django.template.defaultfilters import slugify
 from django.conf import settings
-from django.urls import reverse, reverse_lazy
-from ckeditor_uploader.fields import RichTextUploadingField
+from django.urls import reverse_lazy
 from .managers import EntryManager, CategoriaManager
 
 
@@ -44,7 +43,7 @@ class Entry(models.Model):
     tag = models.ManyToManyField(Tag)
     title = models.CharField('Titulo', max_length=80)
     resume = models.TextField('Resumen')
-    content = RichTextUploadingField('Contenido')
+    content = models.TextField('Contenido')
     public = models.BooleanField('Activo', default=False)
     image = models.ImageField('Imagen', upload_to='entry')
     portada = models.BooleanField(default=False)

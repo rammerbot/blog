@@ -1,0 +1,47 @@
+<header>
+    <div class="grid-x grid-margin-x header">
+        <div class="cell small-12 medium-4 large-3">
+            <a href="{%url 'home_app:index'%}">
+                <img class="card-favoritos-img" src="{% static "img/logo.png" %}">
+            </a>
+        </div>
+        <div class="cell small-12 medium-4">
+        </div>
+        <div class="cell small-12 large-5">
+            <ul class="menu" style="justify-content: flex-end;">
+                <li>
+                    <a class="header_letras" href="{%url 'home_app:index'%}">Home</a>
+                </li>
+                <li>
+                    <a class="header_letras" href="{%url 'entrada_app:entradas'%}">Blog</a>
+                </li>
+                <li>
+                    <a class="header_letras" href="{%url 'ventas_app:products'%}">Tienda</a>
+                </li>
+                <li>
+                    <a class="header_letras" href="{%url 'servicios_app:servicios'%}">servicios</a>
+                </li>
+                {% if request.user.is_authenticated %}
+                    {% if carrito_content %}
+                    <li>
+                        <a class="header_letras" href="{%url 'ventas_app:carrito'%}">Deseos</a>
+                    </li>
+                    <li>
+                        <p class="count">{{count}}</p>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <a class="header_letras" href="{%url 'favorites_app:favorites'%}">favoritos</a>
+                    </li>
+                    <li>
+                        <a class="button alert" href="{%url 'user_app:logout'%}">Cerrar sesion</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a class="success button" href="{%url 'user_app:login'%}">Acceder</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</header>

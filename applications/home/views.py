@@ -7,7 +7,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 
 
-from applications.entrada.models import Entry
+from applications.entrada.models import Entry, Tag
 from .models import Home
 from .forms import SuscribersForm, ContactForm
 from .funtions import comprobar_nombres
@@ -32,6 +32,7 @@ class IndexView(TemplateView):
         context = super(IndexView, self).get_context_data(**kwargs)
         #texto de portada
         context['home'] = Home.objects.latest('-create_at')
+        context['tags'] = Tag.objects.all()
         context["portada"]= Entry.objects.entrada_portada()
         context['entradas_home']= Entry.objects.entradas_home()
         context['entradas_recientes']=Entry.objects.entradas_recientes()

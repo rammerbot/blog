@@ -1,0 +1,99 @@
+<!-- head para PC -->
+{% extends "home/base_home.html" %}
+{% load  static %}
+
+{% block title %}RammerBot | Diseños Web y programacion{% endblock title %}
+{% block content %}
+
+{% include "includes/header.html" %}
+
+
+<div class="grid-container">
+    {% if messages %}
+<div class="cell large-12 center messages mensaje_index">
+    {% for message in messages %}
+    <h3{% if message.tags %} class="{{message.tags}}"{% endif %}><p href="{%url 'home_app:index' %}">{{ message }}</p></h3>
+    {% endfor %}
+</div>
+{% endif %}
+    <!-- primer bloque del home -->
+    <div class="grid-x grid-margin-x" style="margin-top: 1em;">
+        <!-- bloque de blog principal -->
+        <div class="cell small-12 large-6 ">
+            <div class="card shadow" style="width: 100%;">
+                <img src="{{portada.image.url}}">
+                <div class="card-section background_2 orange">
+                  <h4><a class="header_letras" href="{%url 'entrada_app:detail' portada.slug%}">{{portada.title}}</a></h4>
+                  <p class="header_letras2">{{portada.resume | truncatechars:100}}</p>
+                </div>
+            </div>
+        </div>
+        <!-- FIN bloque de blog principal -->
+
+        <!-- bloque de blog principal -->
+        <div class="cell small-12 large-6 grid-x grid-margin-x">
+            {% for entrada in entradas_home %}
+            <div class="cell small-12 large-6 ">
+                <div class="card shadow background_2" style="width: 100%;">
+                    <img class="image_home" src="{{entrada.image.url}}">
+                    <div class="card-section orange">
+                      <h5><a class="header_letras" href="{%url 'entrada_app:detail' entrada.slug%}">{{entrada.title | truncatechars:40}}</a></h5>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- FIN bloque de blog principal -->
+    </div>
+    <!-- FIN del primer bloque home -->
+
+    <!-- segundo bloque pantalla home -->
+    <div class="grid-x align-center" style="margin-top: 1em;">
+        <div class="cell small-12 large-10 callout orange shadow">
+            <h5 class="header_letras" >{{home.title}}</h5>
+            <p class="header_letras2">
+                {{home.about_text}}
+            </p>
+
+            <p>
+                <button class="button warning" data-open="exampleModal2">Suscribirme</button>
+            </p>
+
+            <!-- This is the first modal -->
+            <div class="reveal " id="exampleModal2" data-reveal style="width: 300px;">
+                <p class="lead">Ingresa tu correo</p>
+                <form method='POST' action="{% url 'home_app:suscripcion' %}" class="grid-x grid-margin-x">{% csrf_token %}
+                    <div class="cell small-12">
+                        {{form.email}}
+                    </div>
+                    <div class="cell small-12">
+                        <button type="submit" class="button warning">Suscribirme</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!-- FIN segundo bloque pantalla home -->
+
+
+    <!-- tercer bloque home -->
+    <div class="grid-x grid-margin-x align-center">
+        <h3 class="cell header_letras">Articulos Recientes:</h3>
+        {% for entrada in entradas_recientes %}
+        <div class="cell small-6 large-4">
+            <div class="card shadow orange" style="width: 100%;">
+                <img class="imagen_home2"src="{{entrada.image.url}}">
+                <div class="card-section">
+                  <h4><a  class="header_letras" href="{%url 'entrada_app:detail' entrada.slug%}">{{entrada.title | truncatechars:40}}</a></h4>
+                  <p class="header_letras2">{{entrada.resume | truncatechars:100}} </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- FIN tercer bloque -->
+</div>
+{% include "includes/footer.html" %}
+
+{% endblock content %}
