@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.views.generic import FormView, TemplateView, View
 from django.urls import reverse_lazy, reverse
@@ -49,6 +49,12 @@ class LoginView(FormView):
     form_class = LoginForm
     success_url = reverse_lazy('home_app:index')
 
+    def dispatch(self, request, *args, **kwargs):
+        # Si el usuario ya está autenticado, redirigirlo a otra página
+        if request.user.is_authenticated:
+            return redirect(self.success_url)
+        return super().dispatch(request, *args, **kwargs)
+
     def form_valid(self, form):
         
         user =  authenticate(
@@ -65,7 +71,7 @@ class LogoutView(View):
         logout(request)
 
         return HttpResponseRedirect(
-            reverse('user_app:login')
+            reverse('home_app:index')
         )
 
 # vista de actualizacion de datos

@@ -1,48 +1,81 @@
 {% load static %}
-<header>
-    <div class="grid-x grid-margin-x header">
-        <div class="cell small-12 medium-4 large-3">
-            <a href="{%url 'home_app:index'%}">
-                <img class="card-favoritos-img" src="{% static "img/logo.png" %}">
-            </a>
-        </div>
-        <div class="cell small-12 medium-4">
-        </div>
-        <div class="cell small-12 large-5">
-            <ul class="menu" style="justify-content: flex-end;">
-                <li>
-                    <a class="header_letras" href="{%url 'home_app:index'%}">Home</a>
-                </li>
-                <li>
-                    <a class="header_letras" href="{%url 'entrada_app:entradas'%}">Blog</a>
-                </li>
-                <li>
-                    <a class="header_letras" href="{%url 'ventas_app:products'%}">Tienda</a>
-                </li>
-                <li>
-                    <a class="header_letras" href="{%url 'servicios_app:servicios'%}">servicios</a>
-                </li>
-                {% if request.user.is_authenticated %}
-                    {% if carrito_content %}
-                    <li>
-                        <a class="header_letras" href="{%url 'ventas_app:carrito'%}">Deseos</a>
-                    </li>
-                    <li>
-                        <p class="count">{{count}}</p>
-                    </li>
-                    {% endif %}
-                    <li>
-                        <a class="header_letras" href="{%url 'favorites_app:favorites'%}">favoritos</a>
-                    </li>
-                    <li>
-                        <a class="button alert" href="{%url 'user_app:logout'%}">Cerrar sesion</a>
-                    </li>
-                {% else %}
-                    <li>
-                        <a class="success button" href="{%url 'user_app:login'%}">Acceder</a>
-                    </li>
-                {% endif %}
-            </ul>
+
+
+<header id="header" class="header header-nav-links header-nav-menu" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': false, 'stickyEnableOnMobile': true, 'stickyStartAt': 70, 'stickyChangeLogo': false, 'stickyHeaderContainerHeight': 70}">
+    <div class="header-body border-top-0 bg-black box-shadow-none  ">
+        <div class="header-container container h-100">
+            <div class="header-row mt-2 h-100">
+                <div class="header-column">
+                    <div class="header-row pt-4">
+                        <div class="header-logo pb-4">
+                            <a href="{%url 'home_app:index'%}" class="goto-top hvr-float-shadow"><img alt="RammerBot" width="120" height="120" data-sticky-width="82" data-sticky-height="36" data-sticky-top="0" src="{% static 'img/logo.png' %}" data-plugin-lazyload data-plugin-options="{'threshold': 500}" data-original="{% static 'img/logo.png' %}"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-column justify-content-end">
+                    <div class="header-row">
+                        <button class="btn header-btn-collapse-nav d-lg-none order-3 mt-0 ms-3 me-0" data-bs-toggle="collapse" data-bs-target=".header-nav">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <!-- start: header nav menu -->
+                        <div class="header-nav header-nav-links header-nav-light-text header-nav-dropdowns-dark collapse">
+                            <div class="header-nav-main header-nav-main-mobile-dark header-nav-main-effect-1 header-nav-main-sub-effect-1">
+                                <nav>
+                                    <ul class="nav nav-pills" id="mainNav">
+                                        <li>
+                                            <a class="active nav-link hvr-float-shadow" href="{%url 'home_app:index'%}" data-hash data-hash-offset="120">
+                                                Inicio
+                                            </a>    
+                                        </li>
+                                        <li class="dropdown">
+                                            <a class="nav-link dropdown-toggle hvr-float-shadow" href="{%url 'entrada_app:entradas'%}">
+                                                Blog
+                                            </a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a class="nav-link dropdown-toggle hvr-float-shadow" href="{%url 'ventas_app:products'%}">
+                                                Tienda
+                                            </a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a class="nav-link dropdown-toggle hvr-float-shadow" href="{%url 'servicios_app:servicios'%}">
+                                                Servicios
+                                            </a>
+                                        </li>
+                                            {% if request.user.is_authenticated %}
+                                                <li >
+                                                    <a class="nav-link dropdown-toggle hvr-float-shadow" href="{%url 'favorites_app:favorites'%}">
+                                                        Favoritos
+                                                    </a>
+                                                </li>
+                                                {% if carrito_content %}
+                                                    <li class="dropdown">
+                                                        <a class="nav-link dropdown-toggle hvr-float-shadow" href="{%url 'ventas_app:carrito'%}">
+                                                            Deseos
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <p class="count">{{count}}</p>
+                                                    </li>
+                                                {% endif %}
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>               
+                        <a href="{%url 'user_app:logout'%}" class="hvr-float-shadow btn btn-danger btn-modern btn-rounded text-2 ms-4 d-none d-sm-block">Cerrar Sesion</a>
+                                        {% else %}
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <!-- end: header nav menu -->
+                        <a href="{%url 'user_app:login'%}" class="hvr-float-shadow btn btn-gradient btn-modern btn-rounded text-3 ms-4 d-none d-sm-block">!Iniciar Sesion!</a>
+                    </div>
+                                            
+                                        {% endif %}
+                                    
+                </div>
+            </div>
         </div>
     </div>
 </header>

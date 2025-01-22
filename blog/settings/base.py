@@ -36,8 +36,7 @@ BASE_APPS = [
 ]
 
 THIRD_APPS = [
-    'ckeditor',
-    'ckeditor_uploader',
+
 
 ]
 

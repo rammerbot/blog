@@ -3,7 +3,6 @@ from datetime import datetime, timedelta
 from django.template.defaultfilters import slugify
 from django.conf import settings
 from django.urls import reverse, reverse_lazy
-from ckeditor_uploader.fields import RichTextUploadingField
 from model_utils.models import TimeStampedModel
 
 from .managers import ProductManager, CategoryManager
@@ -26,7 +25,7 @@ class Product(TimeStampedModel):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     price = models.DecimalField('Precio', max_digits=10, decimal_places=2)
     image = models.ImageField('Imagen', upload_to='productos')
-    description = RichTextUploadingField('Descripcion')
+    description = models.TextField('Descripcion')
     public = models.BooleanField('Disponible', default=False)
     slug = models.SlugField(editable=False, max_length=300)
     active = models.BooleanField('Activo', default=True)

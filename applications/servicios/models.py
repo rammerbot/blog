@@ -4,7 +4,7 @@ from django.conf import settings
 from django.urls import reverse, reverse_lazy
 from django.db import models
 from model_utils.models import TimeStampedModel
-from ckeditor_uploader.fields import RichTextUploadingField
+
 
 from .managers import ServicioManager
 # Create your models here.
@@ -25,7 +25,7 @@ class Servicio(TimeStampedModel):
     service = models.CharField('Servicio', max_length=60)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     resume = models.TextField('Resumen', max_length=200)
-    description = RichTextUploadingField('Descripcion')
+    description = models.TextField('Descripcion')
     slug = models.SlugField(editable=False, max_length=300)
     image_1 = models.ImageField('Imagen',null=True, upload_to='servicios')
     image_2 = models.ImageField('Imagen',blank=True, null=True, upload_to='servicios')
